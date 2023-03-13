@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  cursor: url(../imgs/hammer4.png) 30 30, auto;
+  overflow: hidden;
+}
+
+a:link {text-decoration: none; color: #000000; }
+a:visited {text-decoration: none; color: #000000; }
+a:active {text-decoration: none; color: #000000; }
+a:hover {text-decoration: none; color: #000000; }
+
+
+body {
+  background-color: rgb(144, 219, 207);
+  font-family: 'Rubik Iso', cursive;
+}
+
+div {
+  margin: 60px auto;
+  width: 470px;
+  border: 2px dotted black;
+  box-shadow: 9px 5px 0 2px #111;
+  padding: 10px;
+  position: relative;
+  animation: fadeInDown 1.5s;
+}
+
+a {
+  display: block;
+  font-size: 30pt;
+  position: relative;
+}
+
+.appear {
+  animation: fade-in 1s;
+  animation-fill-mode: forwards;
+  display: flex;
+}
+
+.disappear {
+  animation: fade-out 1s;
+  animation-fill-mode: forwards;
+}
+
+.hidden {
+  display: none;
+  opacity: 100;
+}
+
+img {
+  display: none;
+  height: 200px;
+  filter: blur(4px);
+  margin: 15px auto;
+}
+
+div > a:hover+img.hidImg1 {
+  display: block;
+  background: url("../imgs/gopherG.jpeg")no-repeat center/auto 200px;
+}
+a:hover+img.hidImg2 {
+  display: block;
+  background: url("../imgs/lottoG.jpeg")no-repeat center/auto 200px;
+}
+a:hover+img.hidImg3 {
+  display: block;
+  background: url("../imgs/cardG.jpeg")no-repeat center/auto 200px;
+}
+a:hover+img.hidImg4 {
+  display: block;
+  background: url("../imgs/wordChainG.jpg")no-repeat center/auto 200px;
+}
+
+a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 20px;
+  background: #149a6235;
+  left: 0%;
+  transition: all 3s;
+}
+a:hover::after {
+  width: 100%;
+  left: 0;
+  transition: all 3s;
+}
+
+
+p{
+  font-size: 47em;
+  position: absolute;
+  bottom: -22%;
+  right: -3%;
+  color: #149a6235;
+  z-index: -1;
+}
+p.p2{
+  font-weight: 600;
+  font-size: 47em;
+  position: absolute;
+  bottom: -24%;
+  right: -4%;
+  color: #149a621a;
+  z-index: -2;
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+  }
+  to {
+      opacity: 1;
+      transform: translateZ(0);
+  }
+}

@@ -1,0 +1,237 @@
+/********************초기값 세팅***********************/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:linear-gradient(#f3bd48, #bd811b);
+  text-align: center;
+  font-weight: 700;
+}
+
+body,
+div,
+img {
+  margin: 0;
+  padding: 0;
+}
+
+a.home {
+  display: block;
+  background: none;
+  padding: 4px;
+  position: absolute;
+  top: 25px;
+  right: 95px;
+  border: 3px solid #000;
+  border-radius: 30px;
+}
+a.home img {
+  width: 17px;
+}
+
+/**************상단 메뉴**************/
+
+/* 음악(비디오) 추가! */
+video {
+  height: 0px;
+}
+
+/* 음악 버튼 css 추가 16~35 */
+button.btn {
+  background: none;
+  border: 3px solid #000;
+  border-radius: 30px;
+  padding: 5px;
+  position: relative;
+}
+
+button.stop {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+button.play {
+  position: absolute;
+  top: 25px;
+  right: 60px;
+}
+
+li,
+ul {
+  list-style: none;
+}
+
+#info {
+  margin: 40px auto;
+  text-align: center;
+  height: 70px;
+  line-height: 70px;
+  overflow: hidden;
+}
+
+#info>span {
+  display: inline-block;
+  overflow: hidden;
+  padding-right: 10px;
+}
+
+#info>button {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+#info>button>img {
+  display: block;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+}
+
+#info>#timer {
+  color: white;
+  font-size: 70px;
+  text-align: center;
+  width: 130px;
+  margin: auto 10px;
+}
+
+#info>#score {
+  color: white;
+  font-size: 70px;
+  text-align: center;
+  width: auto;
+}
+
+#info>#start {
+  font-size: 70px;
+}
+
+#hurryUp {
+  color: red;
+  font-size: 70px;
+  text-align: center;
+}
+
+/******************main**********************/
+
+#game {
+  width: 1200px;
+  margin: 0 auto;
+  cursor: url("../imgs/hammer2.png") 30 30, auto;
+}
+
+
+.row {
+  margin: 0 auto;
+}
+
+.cell {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 220px;
+  overflow: hidden;
+  margin: 0 40px;
+
+}
+
+.grass {
+  position: relative;
+}
+
+.grass>ul {
+  position: absolute;
+}
+
+.grass>ul:nth-child(1) {
+  top: 15px;
+  left: 100px;
+}
+
+.grass>ul:nth-child(2) {
+  top: 0px;
+  left: 590px;
+}
+
+.grass>ul:nth-child(3) {
+  top: 220px;
+  left: 260px;
+}
+
+.grass>ul:nth-child(4) {
+  top: 230px;
+  left: 705px;
+}
+
+.grass>ul:nth-child(5) {
+  top: 470px;
+  left: 110px;
+}
+
+.grass>ul:nth-child(6) {
+  top: 460px;
+  left: 600px;
+}
+
+.grass>ul>li>img {
+  width: 240px;
+  height: 130px;
+}
+
+.gopher,
+.bomb {
+  width: 200px;
+  height: 200px;
+  bottom: 0;
+  position: absolute;
+  transition: bottom 1s;
+}
+
+.gopher {
+  background: url('../imgs/mole.png') center center no-repeat;
+  background-size: 200px 200px;
+}
+
+.dead {
+  background: url('../imgs/cryingmole.png') center center no-repeat;
+  background-size: 200px 200px;
+}
+
+.bomb {
+  background: url('../imgs/bomb.png') center center no-repeat;
+  background-size: 200px 200px;
+}
+
+.boom {
+  background: url('../imgs/explode.png') center center no-repeat;
+  background-size: 200px 200px;
+}
+
+.hidden {
+  bottom: -200px;
+}
+
+.hole {
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+  background: url('../imgs/mole-hole.png') center center no-repeat;
+  background-size: 200px 150px;
+}
+
+.hole-front {
+  width: 200px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  background: url('../imgs/mole-hole-front.png') center center no-repeat;
+  background-size: 200px 30px;
+}
