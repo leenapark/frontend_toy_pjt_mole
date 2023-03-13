@@ -1,0 +1,215 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>두더지 잡기</title>
+  <link rel="stylesheet" href="./css/4-8-4_whack-a-mole_last.css">
+  <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+
+  <a href="./main.html" class="home"><img src="./imgs/house-heart-fill.svg"/></a>
+  <div id="info">
+    <span id="timer"> </span>
+    <span id="score"> 점수: 0 </span>
+    <button id="timer-start"><img src="./imgs/start.png" alt=""></button>
+    <button id="timer-pause"><img src="./imgs/pause.png" alt=""></button>
+    <span id="hurryUp"></span>
+  </div>
+  <div id="game">
+    <div class="grass">
+      <ul>
+        <li>
+          <img src="imgs/grass.png" alt="">
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <img src="imgs/grass.png" alt="">
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <img src="imgs/grass.png" alt="">
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <img src="imgs/grass.png" alt="">
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <img src="imgs/grass.png" alt="">
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <img src="imgs/grass.png" alt="">
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+      <div class="cell">
+        <div class="hole"></div>
+        <div class="gopher hidden"></div>
+        <div class="bomb hidden"></div>
+        <div class="hole-front"></div>
+      </div>
+    </div>
+  </div>
+
+  <video src="./video/blast-138451.mp3"></video>
+  <br>
+  <button class="play btn"><img src="./imgs/play (1).png" width="15" height="15"></button>
+  <button class="stop btn"><img src="./imgs/pause 2.png" width="15" height="15"></button>
+
+  <script src="./js/4-8-4_whack-a-mole_last.js"></script>
+</body>
+
+</html>
+
+<script type="module">
+  let user = prompt("닉네임을 입력해주세요.", "");
+  console.log(user);
+  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  // 앱 생성 및 식별자 선언
+  const app = createApp({
+    data() {
+      return {
+        name: '',
+        score: 0,
+        rank: [],
+      }
+    },
+    // 앱이 생성될 때 실행, 초기 DOM 랜더링이 됨
+    created: function () {
+      this.fetchData();
+    },
+    methods: {
+      // 서버로 데이터를 요청: url = http://localhost:3000/todoitems
+      // axios(url).then(성공했을 때실).catch(실패했을 때 실행)
+      fetchData: function () {
+        // axios 공식문서 : https://github.com/axios/axios
+        let url = 'http://localhost:3000/rank'
+        // axios 구문아에서 현재 객체를 참조할 수 없기 때문
+        // 현재 객체를 app 변수에 대입을 사용하고, app변수를 사용함
+        let userRank = this  // this : 현재 vue 객체
+        axios.get(url)
+          .then(function (response) {
+            // handle success
+            console.log(response);
+            // console.log(response.data);
+            userRank.todoItems = response.data;
+            // console.log(userInfo.todoItems)
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+      },
+
+      addTodo: function () {
+        // axios post
+        const app = this // axio에서 vue 객체를 인식하도록 하기위한 변수
+        const url = "http://localhost:3000/rank"
+        const formData = { user: this.user, score: this.score }
+        axios.post(url, formData)
+          .then(function (res) {
+            console.log(res)
+            // console.dir(res)
+            app.todoItems.push({ id: res.data.id, user: res.data.user, score: res.data.score });
+
+            console.log(app.rank)
+            // this.name, this.newTodoItem를 todoItems 배열에 추가하기
+            // this.todoItems.push({name: this.name, item: this.newTodoItem});
+          })
+          .catch(function (err) {
+            console.error(err)
+          })
+
+        // input 박스의 입력 값 제거
+        this.clearInputBox()
+      },
+      // input 박스의 입력 값 제거 함수
+      clearInputBox: function () {
+        this.name = ''
+        this.score = 0
+      },
+      
+    },
+  })
+
+  app.mount('#app')
+</script>
